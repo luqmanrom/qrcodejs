@@ -350,6 +350,8 @@ var QRCode;
 		 * @param {Object} htOption QRCode Options 
 		 */
 		var Drawing = function (el, htOption) {
+
+
     		this._bIsPainted = false;
     		this._android = _getAndroid();
 		
@@ -357,15 +359,25 @@ var QRCode;
 			this._elCanvas = document.createElement("canvas");
 			this._elCanvas.width = htOption.width;
 			this._elCanvas.height = htOption.height;
-			el.appendChild(this._elCanvas);
 			this._el = el;
 			this._oContext = this._elCanvas.getContext("2d");
 			this._bIsPainted = false;
 			this._elImage = document.createElement("img");
 			this._elImage.alt = "Scan me!";
 			this._elImage.style.display = "none";
-			this._el.appendChild(this._elImage);
 			this._bSupportDataURI = null;
+
+			if (el.appendChild) {
+				el.appendChild(this._elCanvas);
+				this._el.appendChild(this._elImage);
+			} else if(el instanceof jQuery) {
+
+				el.append(this._elCanvas);
+				this._el.append(this._elImage);
+			}
+
+
+
 		};
 			
 		/**
