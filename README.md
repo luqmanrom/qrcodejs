@@ -9,6 +9,15 @@ QRCode.js has no dependencies.
 new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
 </script>
 ```
+It also accepts jQuery element. It allows for more sophisticated querying using jQuery:
+
+```
+<div id="qrcode"></div>
+<script type="text/javascript">
+new QRCode($('#qrcode'), "http://jindo.dev.naver.com/collie");
+</script>
+```
+
 
 or with some options
 
